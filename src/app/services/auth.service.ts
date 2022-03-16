@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { catchError, map, Observable, of, Subscription } from 'rxjs';
 import IUser from '../models/IUser';
 
 @Injectable({
@@ -17,9 +17,9 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { 
     
   }
+
   signUp(user: IUser): void {
     const currentUrl = `${this.url}Auth/SignUp`;
-
     this.subs.push(
       this.http.post<any>(currentUrl, user).subscribe((res) => {
         this.setToken(res.token);
@@ -31,7 +31,22 @@ export class AuthService {
   private setToken(token: string): void {
     sessionStorage.setItem('token', token);
   }
+  private getToken(): string | null {
+    return sessionStorage.getItem('token');
+  }
+  
+  checkAccess(): Observable<boolean> {
+    const currentUrl = `${this.url}Auth/TestAll`;
 
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + this.getToken(),
+    });
+
+    return this.http.get(currentUrl, { headers }).pipe(
+      map((_) => true),
+      catchError((_) => of(false))
+    );
+  }
 
 
   login(user: IUser): void {
@@ -59,9 +74,7 @@ export class AuthService {
   //   return combineLatest(all$, auth$, admin$).pipe(map((res) => ({ ...res })));
   // }
 
-  // private getToken(): string | null {
-  //   return sessionStorage.getItem('token');
-  // }
+
 
 
 }

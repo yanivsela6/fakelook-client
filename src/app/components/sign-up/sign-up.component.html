@@ -1,13 +1,24 @@
 <div class="display-center full-width">
     <form [formGroup]="signUpForm" (ngSubmit)="submitPost()">
       <div class="display-center"><h2>Sign Up</h2></div>
-      <label for="Name">First Name</label>
+      <label for="Name">Name</label>
       <input formControlName="Name" type="text" id="firstName" />
       <div
         class="error"
         *ngIf="signUpForm.controls['Name'].touched &&signUpForm.controls['Name'].invalid"
       >
-        first name not valid
+        name not valid
+      </div>
+      <label for="Address">Address</label>
+      <input formControlName="Address" type="text" id="address" />
+      <div
+        class="error"
+        *ngIf="
+          signUpForm.controls['Address'].touched &&
+          signUpForm.controls['Address'].invalid
+        "
+      >
+      Address not valid
       </div>
       <label for="Password">Password</label>
       <input formControlName="Password" type="password" id="password" />

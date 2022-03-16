@@ -20,6 +20,10 @@ export class SignUpComponent implements OnInit {
       Validators.required,
       Validators.minLength(4),
     ]),
+    Address: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
   });
 
   ngOnInit(): void {}
