@@ -1,0 +1,21 @@
+.container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.object{
+  width: 50%;
+  box-sizing: border-box;
+
+}
+.map{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+}
+.add-post{
+  position: absolute;
+  top: 82%;
+  left: 92%;
+}

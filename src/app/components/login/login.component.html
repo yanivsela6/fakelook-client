@@ -1,28 +1,29 @@
-<div class="display-center full-width">
+<body>
+  <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+  <h1>Welcome To Fakelook!</h1>
+  <div>
     <form [formGroup]="loginForm" (ngSubmit)="submitPost()">
-      <div class="display-center"><h2>Login</h2></div>
+      <div>
+        <h2>Login</h2>
+      </div>
       <label for="Name">Name</label>
-      <input formControlName="Name" type="text" id="firstName" />
-      <div
-        class="error"
-        *ngIf="
+      <input formControlName="Name" type="text"  />
+      <div class="error" *ngIf="
           loginForm.controls['Name'].touched &&
           loginForm.controls['Name'].invalid
-        "
-      >
-
-         Name not valid
-        </div>
+        ">  
+        name not valid
+      </div>
 
       <label for="Password">Password</label>
-      <input formControlName="Password" type="password" id="password" />
-      <div
-        class="error"
-        *ngIf="
+      <input formControlName="Password" type="password" />
+      <div class="error" *ngIf="
           loginForm.controls['Password'].touched &&
           loginForm.controls['Password'].invalid
-        "
-      >
+        ">
         password not valid
       </div>
       <div class="display-center">
@@ -35,3 +36,4 @@
       </div>
     </form>
   </div>
+</body>
