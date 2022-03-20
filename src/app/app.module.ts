@@ -18,6 +18,9 @@ import { WindowPostComponent } from './components/window-post/window-post.compon
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { MainViewComponent } from './components/main-view/main-view.component';
+import { FilterComponent } from './components/filter/filter.component';
+import { FriendsComponent } from './components/friends/friends.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 @NgModule({
@@ -32,7 +35,10 @@ import { MainViewComponent } from './components/main-view/main-view.component';
     WindowPostComponent,
     ImageUploadComponent,
     TimelineComponent,
-    MainViewComponent
+    MainViewComponent,
+    FilterComponent,
+    FriendsComponent,
+    LogoutComponent
   ],
   imports: [
     CommonModule,

@@ -12,6 +12,8 @@ import { PostService } from 'src/app/services/post.service';
 export class MainViewComponent implements OnInit {
 
   posts$!:Observable<AcNotification>
+  showMap:boolean = true;
+  text:string = 'TimeLine';
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
@@ -35,7 +37,10 @@ export class MainViewComponent implements OnInit {
       isShow: true
     }
   }
-
+  ShowMap(){
+    this.text = this.showMap ?  'Map':'TimeLine';
+    this.showMap = !this.showMap;
+  }
 }
 
 let x=()=>(7);

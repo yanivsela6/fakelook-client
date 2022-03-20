@@ -1,3 +1,4 @@
+<div class="container">
 <ac-map #map>
     <ac-layer
       *ngIf="posts$"
@@ -13,7 +14,8 @@
             </div>
             <div class="post-description">{{ post.Description }}</div>
           </div>
-        </ng-template>
-      </ac-html-desc>
-    </ac-layer>
-  </ac-map>
+      </ng-template>
+    </ac-html-desc>
+  </ac-layer>
+</ac-map>
+</div>
