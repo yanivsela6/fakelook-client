@@ -18,7 +18,7 @@ declare var Cesium: any;
 })
 export class MapComponent implements OnInit {
 
-  @Input() posts?:IPost[] ;
+  @Input() posts$?:Observable<AcNotification>; ;
 
   constructor(
     private viewerConf: ViewerConfiguration,
@@ -37,7 +37,6 @@ export class MapComponent implements OnInit {
       useDefaultRenderLoop: true,
     };
   }
-  entities$!: Observable<AcNotification>;
   showDialog = false;
   Cesium = Cesium;
   ngOnInit(): void {

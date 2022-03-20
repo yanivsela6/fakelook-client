@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { map, observable, Observable, Subject, Subscription } from 'rxjs';
 import IPost from '../models/IPost';
 import { AuthService } from './auth.service';
 
@@ -9,6 +10,8 @@ import { AuthService } from './auth.service';
 })
 export class PostService {
   private url = 'https://localhost:44349/api/';
+  private subs: Subscription[] = [];
+  private postsSubject: Subject<IPost[]> = new Subject();
   constructor(private http: HttpClient,private authService: AuthService,private router: Router) { }
   
   EditPost(post: IPost): void {
@@ -22,11 +25,11 @@ export class PostService {
       });
   }
 
-  AllPosts(): IPost[]{
-
-   const posts:IPost[] = []
-    
-    return posts;
+  AllPosts(): Observable<IPost[]>{
+    const currentUrl = `${this.url}Posts`;
+    let a:Observable<IPost[]> = this.http.get<IPost[]>(currentUrl)
+    console.log(a)
+    return a
   }
 
 }
