@@ -10,10 +10,15 @@ import { PostService } from 'src/app/services/post.service';
 export class MainViewComponent implements OnInit {
 
   posts:IPost[] = []
+  showMap:boolean = true;
+  text:string = 'TimeLine';
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
     this.posts = this.postService.AllPosts();
   }
-
+  ShowMap(){
+    this.text = this.showMap ?  'Map':'TimeLine';
+    this.showMap = !this.showMap;
+  }
 }

@@ -35,9 +35,7 @@ html, body {
 }
 
 .circles{
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: fixed;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -65,9 +63,9 @@ html, body {
 
 .circles li:nth-child(2){
     left: 10%;
-    width: 20px;
-    height: 20px;
-    animation-delay: 2s;
+    width: 60px;
+    height: 60px;
+    animation-delay: 6s;
     animation-duration: 12s;
 }
 
@@ -104,13 +102,13 @@ html, body {
     left: 35%;
     width: 150px;
     height: 150px;
-    animation-delay: 7s;
+    animation-delay: 4s;
 }
 
 .circles li:nth-child(8){
     left: 50%;
-    width: 25px;
-    height: 25px;
+    width: 80px;
+    height: 80px;
     animation-delay: 15s;
     animation-duration: 45s;
 }

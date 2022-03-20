@@ -92,7 +92,7 @@ input{
     font-weight: 300;
 }
 button{
-    margin-top: 50px;
+    margin-top: 30px;
     width: 100%;
     background-color: #1845ad;
     color: #080710;
@@ -104,6 +104,8 @@ button{
 }
 .display-center{
     text-align: center;
+    padding: 10px;
+
 }
 :hover button{
     background-color: #4476eb;

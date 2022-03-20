@@ -1,7 +1,8 @@
 
 <div class="container">
     <app-action-bar class="object"></app-action-bar>
-    <app-map class="object map"></app-map>
+    <app-main-view class="object map"></app-main-view>
     <app-add-post [showWindow]="showWindow" (showWindowEvent) = "ShowWindow($event)"class="add-post"></app-add-post>
     <app-window-post (showWindowPost) = "ShowWindow($event)" *ngIf="showWindow"></app-window-post>
+    <app-logout class="logout-button"></app-logout>
 </div>
