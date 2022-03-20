@@ -1,0 +1,25 @@
+<body>
+    <div>
+      <form [formGroup]="postForm" (ngSubmit)="submitPost()">
+        <div>
+          <h2>New Post</h2>
+        </div>
+        <div class="imageUpload"><app-image-upload></app-image-upload></div>
+  
+        <label for="Description">Description</label>
+        <textarea formControlName="Description" type="text" class="input-des"></textarea>
+        <div class="error" *ngIf="
+        postForm.controls['Description'].touched &&
+        postForm.controls['Description'].invalid
+          ">
+          password not valid
+        </div>
+
+        <div class="display-center">
+          <button type="submit" class="btn" [disabled]="!postForm.valid" >
+            Add Post
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
