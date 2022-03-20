@@ -14,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ActionBarComponent } from './components/action-bar/action-bar.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { WindowPostComponent } from './components/window-post/window-post.component';
+import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { WindowPostComponent } from './components/window-post/window-post.compon
     HomeComponent,
     ActionBarComponent,
     AddPostComponent,
-    WindowPostComponent
+    WindowPostComponent,
+    ImageUploadComponent
   ],
   imports: [
     HttpClientModule,

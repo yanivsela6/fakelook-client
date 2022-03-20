@@ -27,13 +27,6 @@ export class AuthService {
       })
     );
   }
-
-  private setToken(token: string): void {
-    sessionStorage.setItem('token', token);
-  }
-  private getToken(): string | null {
-    return sessionStorage.getItem('token');
-  }
   
   checkAccess(): Observable<boolean> {
     const currentUrl = `${this.url}Auth/TestAll`;
@@ -53,26 +46,27 @@ export class AuthService {
     const currentUrl = `${this.url}Auth/Login`;
     this.subs.push(
       this.http.post<any>(currentUrl, user).subscribe((res) => {
+        this.setUserId(res.userId);
         this.setToken(res.token);
         this.router.navigateByUrl('/Home');
       })
     );
   }
 
-  // secret(): Observable<any> {
-  //   const currentUrl = `${this.url}Secret/`;
-  //   const headers = new HttpHeaders({
-  //     Authorization: 'Bearer ' + this.getToken(),
-  //   });
-  //   const all$ = this.http.get<any>(currentUrl + 'All');
-  //   const auth$ = this.http
-  //     .get<any>(currentUrl + 'Authenticated', { headers })
-  //     .pipe(catchError((err) => of({ msg: 'you are not authenticated' })));
-  //   const admin$ = this.http
-  //     .get<any>(currentUrl + 'Admin', { headers })
-  //     .pipe(catchError((err) => of({ msg: 'you are not admin' })));
-  //   return combineLatest(all$, auth$, admin$).pipe(map((res) => ({ ...res })));
-  // }
+  private setToken(token: string): void {
+    sessionStorage.setItem('token', token);
+
+  }
+  private setUserId(userId: string): void {
+    sessionStorage.setItem('userId', userId);
+
+  }
+  getToken(): string | null {
+    return sessionStorage.getItem('token');
+  }
+  getUserId(): number {
+    return Number(sessionStorage.getItem('userId'));
+  }
 
 
 

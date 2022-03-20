@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import IUser from 'src/app/models/IUser';
-import { AuthService } from 'src/app/services/auth.service';
+import IPost from 'src/app/models/IPost';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-window-post',
@@ -10,22 +10,24 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class WindowPostComponent implements OnInit {
 
-  constructor(private authService: AuthService) {}
-  loginForm = new FormGroup({
-    Name: new FormControl('', [
-      Validators.required,
-      Validators.minLength(2),
-    ]),
-    Password: new FormControl('', [
+  constructor(private postService: PostService) {}
+  @Output() showWindowPost = new EventEmitter<boolean>();
+
+  postForm = new FormGroup({
+    Description: new FormControl('', [
       Validators.required,
       Validators.minLength(1),
     ]),
   });
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
   submitPost(): void {
-    const user: IUser = this.loginForm.value;
-    this.authService.login(user);
+    const post: IPost = this.postForm.value;
+    //this.postService.EditPost(post);
+    this.showWindowPost.emit(false);
+
   }
 
 }

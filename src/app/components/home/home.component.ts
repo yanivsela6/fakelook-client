@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,16 +7,16 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
- showWindow:Boolean = false;
+ showWindow:boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  ShowWindow(show: Boolean){
+  ShowWindow(show: boolean){
     this.showWindow = show;
-
   }
+
 
 }
