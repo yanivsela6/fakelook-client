@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, Input } from '@angular/core';
 import {
   AcMapComponent,
   AcNotification,
@@ -7,6 +7,7 @@ import {
   CameraService,
 } from 'angular-cesium';
 import { map, mergeMap, Observable, of } from 'rxjs';
+import IPost from 'src/app/models/IPost';
 const randomLocation = require('random-location');
 declare var Cesium: any;
 @Component({
@@ -16,6 +17,9 @@ declare var Cesium: any;
   providers: [ViewerConfiguration],
 })
 export class MapComponent implements OnInit {
+
+  @Input() posts?:IPost[] ;
+
   constructor(
     private viewerConf: ViewerConfiguration,
   ) {
@@ -37,6 +41,7 @@ export class MapComponent implements OnInit {
   showDialog = false;
   Cesium = Cesium;
   ngOnInit(): void {
+    
   }
   closeDialog(): void {
     this.showDialog = false;

@@ -21,4 +21,12 @@ export class PostService {
         this.router.navigateByUrl('/Home');
       });
   }
+
+  AllPosts(): IPost[]{
+
+   const posts:IPost[] = []
+    
+    return posts;
+  }
+
 }
