@@ -4,8 +4,7 @@ button {
         #2f90ffb2,
         #1d19f0a9
     );  
-    border: 1px solid #1d19f0a9;
-
+   border: 1px solid #1d19f0a9;
   border-radius: 10%;
   box-shadow: rgba(0, 10, 0, 10) 1px 2px 4px;
   box-sizing: border-box;
@@ -20,7 +19,6 @@ button {
   position: absolute;
   top: 5%;
   left: 5%;
-
 
 }
 
