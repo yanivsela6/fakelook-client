@@ -1,14 +1,19 @@
 <div class="container">
 <ac-map #map>
-  <ac-layer *ngIf="entities$" acFor="let entity of entities$" [context]="this" [debug]="true">
-    <ac-html-desc props="{position: entity.location, show: true}">
-      <ng-template let-entity>
-        <div class="map-post">
-          <div>
-            <img src="{{ entity.imageSrc }}" />
+    <ac-layer
+      *ngIf="posts$"
+      acFor="let post of posts$"
+      [context]="this"
+      [debug]="true"
+    >
+      <ac-html-desc props="{position:post.location, show: true}">
+        <ng-template let-post>
+          <div class="map-post">
+            <div>
+              <img src="{{ post.imageSrc }}" />
+            </div>
+            <div class="post-description">{{ post.Description }}</div>
           </div>
-          <div class="post-description">{{ entity.description }}</div>
-        </div>
       </ng-template>
     </ac-html-desc>
   </ac-layer>
