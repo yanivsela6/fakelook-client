@@ -22,6 +22,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { FullPostComponent } from './components/full-post/full-post.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
     FilterComponent,
     FriendsComponent,
     LogoutComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    FullPostComponent
   ],
   imports: [
     CommonModule,

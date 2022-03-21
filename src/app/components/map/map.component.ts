@@ -7,9 +7,10 @@ import {
   CameraService,
 } from 'angular-cesium';
 import { map, mergeMap, Observable, of } from 'rxjs';
+import IMapObj from 'src/app/models/IMapObj';
 import IPost from 'src/app/models/IPost';
 const randomLocation = require('random-location');
-declare var Cesium: any;
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -18,7 +19,6 @@ declare var Cesium: any;
 })
 export class MapComponent implements OnInit {
 
-  @Input() posts$?:Observable<AcNotification>; ;
 
   constructor(
     private viewerConf: ViewerConfiguration,
@@ -37,6 +37,8 @@ export class MapComponent implements OnInit {
       useDefaultRenderLoop: true,
     };
   }
+  @Input() posts$?:Observable<AcNotification>; ;
+  selectedPost!: IMapObj;
   showDialog = false;
   Cesium = Cesium;
   ngOnInit(): void {
@@ -44,5 +46,10 @@ export class MapComponent implements OnInit {
   }
   closeDialog(): void {
     this.showDialog = false;
+  }
+  showFullPost(post:IMapObj) {
+    console.log("here!");
+    this.selectedPost=post;
+    this.showDialog=true;
   }
 }
