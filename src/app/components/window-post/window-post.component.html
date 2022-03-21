@@ -4,13 +4,21 @@
         <div>
           <h2>New Post</h2>
         </div>
-        <div class="imageUpload"><app-image-upload></app-image-upload></div>
+        <div class="imageUpload"><app-image-upload (imgSrc)="imgSrcInput($event)"></app-image-upload></div>
   
         <label for="Description">Description</label>
         <textarea formControlName="Description" type="text" class="input-des"></textarea>
         <div class="error" *ngIf="
         postForm.controls['Description'].touched &&
         postForm.controls['Description'].invalid
+          ">
+          password not valid
+        </div>
+        <label for="Tags">Tags</label>
+        <input formControlName="Tags" type="text" >
+        <div class="error" *ngIf="
+        postForm.controls['Tags'].touched &&
+        postForm.controls['Tags'].invalid
           ">
           password not valid
         </div>

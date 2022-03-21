@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-image-upload',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./image-upload.component.css']
 })
 export class ImageUploadComponent  {
+	@Output() imgSrc = new EventEmitter<string>();
+
 
 	//url; //Angular 8
 	url: any; //Angular 11, for stricter type
@@ -30,9 +32,10 @@ export class ImageUploadComponent  {
 		reader.onload = (_event) => {
 			this.msg = "";
 			this.url = reader.result; 
-      console.log(this.url);
+			this.imgSrc.emit(this.url);
 
 		}
+
 	}
 
 }
