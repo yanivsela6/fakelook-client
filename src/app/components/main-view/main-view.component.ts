@@ -43,11 +43,3 @@ export class MainViewComponent implements OnInit {
     this.showMap = !this.showMap;
   }
 }
-
-let x=()=>(7);
-
-let y =function (){
-  let xjj
-  return 7;
-}
-y

@@ -8,9 +8,9 @@
     >
       <ac-html-desc props="{position:post.location, show: true}">
         <ng-template let-post>
-          <div class="map-post">
+          <div class="map-post"(click)="showFullPost(post)">
             <div>
-              <img src="{{ post.imageSrc }}" />
+              <img src="{{ post.imageSrc}}" />
             </div>
             <div class="post-description">{{ post.Description }}</div>
           </div>
@@ -18,4 +18,8 @@
     </ac-html-desc>
   </ac-layer>
 </ac-map>
+<app-full-post *ngIf="showDialog" [post]="selectedPost" (closeWindowEmitter)="closeDialog()" >
+
+</app-full-post>
 </div>
+
