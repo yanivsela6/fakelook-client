@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import IPost from 'src/app/models/IPost';
+import ITag from 'src/app/models/ITag';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class WindowPostComponent implements OnInit {
 
   constructor(private postService: PostService) { }
   @Output() showWindowPost = new EventEmitter<boolean>();
-  @Input() imageSrc:string = '';
+  @Input() imageSrc: string = '';
 
   postForm = new FormGroup({
     Description: new FormControl('', [
@@ -29,24 +30,34 @@ export class WindowPostComponent implements OnInit {
   }
 
   submitPost(): void {
+    const tags:ITag[] = this.createTags(this.postForm.value.Tags);
     let post: IPost = {
-      id: "",
-      description: "",
-      imageSorce: "",
-      x_Position: "",
-      y_Position: "",
-      z_Position: "",
-      Date: new Date(),
-      UserId: 0
+      id: 0,
+      description: this.postForm.value.Description,
+      imageSorce: this.imageSrc,
+      x_Position: 0,
+      y_Position: 0,
+      z_Position: 0,
+      date: new Date(),
+      userId: Number(sessionStorage.getItem('userId')),
+      tags:tags
+
     };
-    post.description = this.postForm.value.Description;
-    post.imageSorce = this.imageSrc;
-    //this.postService.EditPost(post);
+
+    this.postService.EditPost(post);
     this.showWindowPost.emit(false);
     alert("You added new post")
   }
+  createTags(tags:string):ITag[]{
+    let allTagStrings = tags.split(",");
+    const finalTags:ITag[]= []
+    allTagStrings.forEach(t => {
+      finalTags.push({id:0,content:t});
+    });
+    return finalTags;
+  }
 
-  imgSrcInput(src:string){
+  imgSrcInput(src: string) {
     this.imageSrc = src;
   }
 

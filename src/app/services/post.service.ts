@@ -19,7 +19,8 @@ export class PostService {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.authService.getToken(),
     });
-    post.UserId = this.authService.getUserId();
+    //post.userId = this.authService.getUserId();
+    console.log(post);
     this.http.post<IPost>(currentUrl, post, { headers }).subscribe((res) => {
         this.router.navigateByUrl('/Home');
       });

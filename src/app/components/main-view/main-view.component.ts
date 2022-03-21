@@ -20,7 +20,7 @@ export class MainViewComponent implements OnInit {
     this.posts$ = this.postService.AllPosts().pipe(
       map((posts) => {
         return posts.map((post) => ({
-          id: post.id,
+          id: post.id.toString(),
           actionType: ActionType.ADD_UPDATE,
           entity: this.convert(post),
         }));
