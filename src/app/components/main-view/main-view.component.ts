@@ -20,22 +20,23 @@ export class MainViewComponent implements OnInit {
     this.posts$ = this.postService.AllPosts().pipe(
       map((posts) => {
         return posts.map((post) => ({
-          id: post.Id,
+          id: post.id,
           actionType: ActionType.ADD_UPDATE,
           entity: this.convert(post),
         }));
       }),
-      mergeMap((entity) => entity)
+      mergeMap((post) => post)
     );
   }
   convert(post:IPost) {
-    return {
-      id: post.Id,
-      description: post.Description,
-      imageSrc: post.ImageSorce,
-      location: { x: Number(post.X_Position), y: Number(post.Y_Position), z: Number(post.Z_Position) },
+     let  x={
+      id: post.id,
+      description: post.description,
+      imageSrc: post.imageSorce,
+      location: Cesium.Cartesian3.fromDegrees(post.x_Position,  post.y_Position),
       isShow: true
     }
+    return x
   }
   ShowMap(){
     this.text = this.showMap ?  'Map':'TimeLine';
