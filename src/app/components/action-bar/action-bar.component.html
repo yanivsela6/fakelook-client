@@ -1,6 +1,6 @@
     <aside>
-      <button class="button-65" routerLink="/Home/filter" routerLinkActive="active">Filter</button>
-      <button class="button-65" routerLink="/Home/friends" routerLinkActive="active">Friends</button>
+      <button class="button-65" routerLink="/Home/filter" routerLinkActive="active" (click)="Selection()"  [ngStyle]="{'background-color': filter?  '#1366d6':'#4e7fc8' }">Filter</button>
+      <button class="button-65" routerLink="/Home/friends" routerLinkActive="active" (click)="Selection1()" [ngStyle]="{'background-color': !filter? '#1366d6':'#4e7fc8' }">Friends</button>
       <div class="container">
         <router-outlet></router-outlet>
       </div>

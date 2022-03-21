@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import IQuery from 'src/app/models/IQuery';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,22 +11,41 @@ import { AuthService } from 'src/app/services/auth.service';
 export class FilterComponent implements OnInit {
 
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
   loginForm = new FormGroup({
-    Name: new FormControl('', [
+    DateFrom: new FormControl('', [
       Validators.required,
       Validators.minLength(2),
     ]),
-    Password: new FormControl('', [
+    DateTo: new FormControl('', [
       Validators.required,
       Validators.minLength(4),
     ]),
+    Publishers: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
+    Tags: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
+    TagsUsers: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
+
   });
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   submitPost(): void {
-    const user: any = this.loginForm.value;
-    this.authService.login(user);
+    const query: IQuery = this.loginForm.value;
+    query.DateFrom = new Date(this.loginForm.value.DateFrom);
+    query.DateTo = new Date(this.loginForm.value.DateTo);
+    query.Publishers = this.loginForm.value.Publishers.split(",");
+    query.Tags = this.loginForm.value.Tags.split(",");
+    query.TagsUsers = this.loginForm.value.TagsUsers.split(",");
+    console.log(query);
+    // this.authService.login(user);
   }
 
 }

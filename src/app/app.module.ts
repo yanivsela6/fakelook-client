@@ -21,6 +21,7 @@ import { MainViewComponent } from './components/main-view/main-view.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { FriendsComponent } from './components/friends/friends.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     MainViewComponent,
     FilterComponent,
     FriendsComponent,
-    LogoutComponent
+    LogoutComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     CommonModule,

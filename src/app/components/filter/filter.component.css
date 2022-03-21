@@ -11,7 +11,7 @@ form{
 
     border-radius: 10px;
     backdrop-filter: blur(10px);
-    padding: 50px 35px;
+    padding: 20px 35px;
 }
 form *{
     font-family: 'Poppins',sans-serif;
@@ -65,3 +65,4 @@ button{
 .error{
     color: rgb(161, 4, 4);
   }
+  

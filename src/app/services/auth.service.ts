@@ -23,7 +23,7 @@ export class AuthService {
     this.subs.push(
       this.http.post<any>(currentUrl, user).subscribe((res) => {
         this.setToken(res.token);
-        this.router.navigateByUrl('/Home');
+        this.router.navigateByUrl('/Home/filter');
       })
     );
   }
@@ -48,7 +48,7 @@ export class AuthService {
       this.http.post<any>(currentUrl, user).subscribe((res) => {
         this.setUserId(res.userId);
         this.setToken(res.token);
-        this.router.navigateByUrl('/Home');
+        this.router.navigateByUrl('/Home/filter');
       })
     );
   }
