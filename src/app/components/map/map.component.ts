@@ -37,19 +37,19 @@ export class MapComponent implements OnInit {
       useDefaultRenderLoop: true,
     };
   }
-  @Input() posts$?:Observable<AcNotification>; ;
+  @Input() posts$?: Observable<AcNotification>;;
   selectedPost!: IMapObj;
   showDialog = false;
   Cesium = Cesium;
   ngOnInit(): void {
-    
+
   }
   closeDialog(): void {
     this.showDialog = false;
   }
-  showFullPost(post:IMapObj) {
+  showFullPost(post: IMapObj) {
     console.log("here!");
-    this.selectedPost=post;
-    this.showDialog=true;
+    this.selectedPost = post;
+    this.showDialog = true;
   }
 }

@@ -1,8 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Console } from 'console';
 import { map, observable, Observable, Subject, Subscription } from 'rxjs';
 import IPost from '../models/IPost';
+import IQuery from '../models/IQuery';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -19,18 +21,44 @@ export class PostService {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.authService.getToken(),
     });
-    //post.userId = this.authService.getUserId();
-    console.log(post);
+    post.userId = this.authService.getUserId();
     this.http.post<IPost>(currentUrl, post, { headers }).subscribe((res) => {
-        this.router.navigateByUrl('/Home');
+      this.AllPosts();
       });
   }
 
-  AllPosts(): Observable<IPost[]>{
+  AllPostsFirst(): Observable<IPost[]>{
     const currentUrl = `${this.url}Posts`;
-    let a:Observable<IPost[]> = this.http.get<IPost[]>(currentUrl)
-    console.log(a)
-    return a
+    this.subs.push(
+      this.http
+        .get<IPost[]>(currentUrl)
+        .subscribe((res) => this.postsSubject.next(res))
+    );
+    return this.postsSubject.asObservable()
   }
+
+  AllPosts(){
+    const currentUrl = `${this.url}Posts`;
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + this.authService.getToken(),
+    });
+    this.subs.push(
+      this.http
+        .get<IPost[]>(currentUrl, { headers })
+        .subscribe((res) => this.postsSubject.next(res))
+    );
+  }
+
+  PostsFilter(query?:IQuery){
+    const currentUrl = `${this.url}Posts/filter`;
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + this.authService.getToken(),
+    });
+    this.subs.push(this.http.post<IPost[]>(currentUrl, query, { headers }).subscribe(res=>{
+      console.log(res);
+      this.postsSubject.next(res);    
+    }))
+  }
+
 
 }
