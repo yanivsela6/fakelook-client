@@ -34,7 +34,12 @@ export class MainViewComponent implements OnInit {
       description: post.description,
       imageSrc: post.imageSorce,
       location: Cesium.Cartesian3.fromDegrees(post.x_Position,  post.y_Position),
-      isShow: true
+      isShow: true,
+      likes:post.likes,
+      tags:post.tags,
+      date:post.date,
+      userId:post.userId
+      
     }
     return x
   }

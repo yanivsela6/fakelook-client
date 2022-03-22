@@ -40,7 +40,8 @@ export class WindowPostComponent implements OnInit {
       z_Position: 0,
       date: new Date(),
       userId: Number(sessionStorage.getItem('userId')),
-      tags:tags
+      tags:tags,
+      likes:[]
 
     };
 

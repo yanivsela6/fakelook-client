@@ -1,3 +1,4 @@
+import ILike from "./ILike";
 import ITag from "./ITag";
 
 interface IPost{
@@ -9,6 +10,7 @@ interface IPost{
     z_Position:number,
     date:Date,
     userId:number,
-    tags:ITag[]
+    tags:ITag[],
+    likes:ILike[],
 }
 export default IPost; 

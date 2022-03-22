@@ -26,6 +26,20 @@ export class PostService {
       });
   }
 
+  EditPostById(post:IPost ):void {
+    const currentUrl = `${this.url}Posts/`+post.id;
+    console.log(currentUrl)
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + this.authService.getToken(),
+    });
+    //post.userId = this.authService.getUserId();
+    console.log(post);
+    this.http.post<IPost>(currentUrl, post, { headers }).subscribe((res) => {
+        this.router.navigateByUrl('/Home');
+      });
+  }
+
+
   AllPosts(): Observable<IPost[]>{
     const currentUrl = `${this.url}Posts`;
     let a:Observable<IPost[]> = this.http.get<IPost[]>(currentUrl)
