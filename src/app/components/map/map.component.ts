@@ -47,9 +47,8 @@ export class MapComponent implements OnInit {
   closeDialog(): void {
     this.showDialog = false;
   }
-  showFullPost(post: IMapObj) {
-    console.log("here!");
-    this.selectedPost = post;
-    this.showDialog = true;
+  showFullPost(post:IMapObj) {
+    this.selectedPost=post;
+    this.showDialog=true;
   }
 }

@@ -1,5 +1,10 @@
+import IUser from "./IUser";
+
 interface ILike{
-    id:number,
+    id:number|undefined,
     isActive:boolean,
+    user:any,
+    userId:number,
+    postId:number
 }
 export default ILike; 

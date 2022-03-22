@@ -27,6 +27,18 @@ export class PostService {
       });
   }
 
+  EditPostById(post:IPost ):void {
+    const currentUrl = `${this.url}Posts/`+post.id;
+    console.log(currentUrl)
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + this.authService.getToken(),
+    });
+    //post.userId = this.authService.getUserId();
+    console.log(post);
+    this.http.post<IPost>(currentUrl, post, { headers }).subscribe((res) => {
+        this.router.navigateByUrl('/Home');
+      });
+  }
   AllPostsFirst(): Observable<IPost[]>{
     const currentUrl = `${this.url}Posts`;
     this.subs.push(
@@ -36,6 +48,7 @@ export class PostService {
     );
     return this.postsSubject.asObservable()
   }
+
 
   AllPosts(){
     const currentUrl = `${this.url}Posts`;

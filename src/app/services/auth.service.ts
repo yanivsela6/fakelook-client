@@ -22,6 +22,7 @@ export class AuthService {
     const currentUrl = `${this.url}Auth/SignUp`;
     this.subs.push(
       this.http.post<any>(currentUrl, user).subscribe((res) => {
+        this.setUserId(res.id);
         this.setToken(res.token);
         this.router.navigateByUrl('/Home/filter');
       })
@@ -46,7 +47,7 @@ export class AuthService {
     const currentUrl = `${this.url}Auth/Login`;
     this.subs.push(
       this.http.post<any>(currentUrl, user).subscribe((res) => {
-        this.setUserId(res.userId);
+        this.setUserId(res.id);
         this.setToken(res.token);
         this.router.navigateByUrl('/Home/filter');
       })
