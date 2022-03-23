@@ -15,7 +15,6 @@ export class FullPostComponent implements OnInit {
   flag1?:boolean = true
   flag2?:boolean = false
   index:number=-1
-  changed:boolean = false
   id=Number(sessionStorage.getItem('userId'));
   constructor(private postService: PostService) { }
 
@@ -26,8 +25,6 @@ export class FullPostComponent implements OnInit {
    for(var i=0;i<this.post.likes.length;i++) {
      if(this.id==this.post.likes[i].userId) {
        this.index=i;
-       console.log(this.id)
-       console.log(this.post.likes[i].isActive +" boo")
        if(this.post.likes[i].isActive) {
          this.flag1=false;
          this.flag2=true;
@@ -45,39 +42,39 @@ export class FullPostComponent implements OnInit {
      this.flag2=!this.flag2
      console.log(this.index)
           if(this.index!=-1){
-              this.post.likes[this.index].isActive=!this.post.likes[this.index].isActive
-              this.changed = true; 
+              this.post.likes[this.index-1].isActive=!this.post.likes[this.index-1].isActive
               console.log(this.post.likes[this.index].isActive)
           }
      else {
-       var l :ILike ={id:this.post.likes.length+1,isActive:true,user:null,userId:this.id,postId:Number(this.post.id)}
+       var l :ILike ={id:undefined,isActive:true,user:null,userId:this.id,postId:Number(this.post.id)}
        this.post.likes.push(l)
        console.log("after push")
        console.log(this.post.likes)
        this.index=this.post.likes.length -1
+       console.log("index is")
        console.log(this.index)
      }
 
-        var p:IPost  = {
-          id:Number(this.post.id),
-          description:this.post.description,
-          imageSorce:this.post.imageSrc,
-          x_Position:this.post.location.x,
-          y_Position:this.post.location.y,
-          z_Position:this.post.location.z,
-          date:this.post.date,userId:this.post.userId,
-          tags:this.post.tags,
-          likes:this.post.likes
-        }
-        console.log("!!!!")
-        console.log(p.likes)
-
-      this.postService.EditPostById(p)
   }
   
 
   
   close(): void {
+    var p:IPost  = {
+      id:Number(this.post.id),
+      description:this.post.description,
+      imageSorce:this.post.imageSrc,
+      x_Position:this.post.location.x,
+      y_Position:this.post.location.y,
+      z_Position:this.post.location.z,
+      date:this.post.date,userId:this.post.userId,
+      tags:this.post.tags,
+      likes:this.post.likes
+    }
+    console.log("!!!!")
+    console.log(p.likes)
+
+  this.postService.EditPostById(p)
        this.closeWindowEmitter.emit();
   }
 }
