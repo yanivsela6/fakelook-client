@@ -2,9 +2,11 @@
     margin: 20px 0 0 15px;
     flex-grow: 1; 
     width: 1000px;
-    
+    height: 800px;
+    padding: auto;
 }
 .container{
+    padding: 15%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

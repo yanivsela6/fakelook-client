@@ -34,12 +34,14 @@ export class MapComponent implements OnInit {
       navigationInstructionsInitiallyVisible: false,
       useDefaultRenderLoop: true,
     };
+    
   }
   @Input() posts$?: Observable<AcNotification>;
   selectedPost!: IMapObj;
   showDialog = false;
   Cesium = Cesium;
   ngOnInit(): void {
+    
 
   }
   closeDialog(): void {

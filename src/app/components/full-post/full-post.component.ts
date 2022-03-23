@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import IComment from 'src/app/models/IComment';
 import ILike from 'src/app/models/ILike';
 import IMapObj from 'src/app/models/IMapObj';
 import IPost from 'src/app/models/IPost';
@@ -18,6 +19,8 @@ export class FullPostComponent implements OnInit {
   index: number = -1
   changed: boolean = false
   id = Number(sessionStorage.getItem('userId'));
+  text: string = "";
+
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
@@ -57,11 +60,23 @@ export class FullPostComponent implements OnInit {
         userId: this.id,
         postId: Number(this.post.id)
       }
-    this.postService.AddLike(newLike);
+      this.postService.AddLike(newLike);
 
     }
   }
 
+  CommitClicked() {
+    var commit: IComment = {
+      id: 0,
+      content: this.text,
+      userId: this.id,
+      postId: Number(this.post.id)
+    }
+
+    this.postService.AddComment(commit);
+    this.post.comments.push(commit)
+
+  }
 
 
   close(): void {
