@@ -1,3 +1,3 @@
-<app-map [posts$]="posts$" *ngIf="showMap"></app-map>
-<app-timeline *ngIf="!showMap"></app-timeline>
+<app-map [posts$]="posts$" [ngStyle]="{'display': showMap?  'inline':'none' }"></app-map>
+<app-timeline  [posts$]="posts2" [ngStyle]="{'display': !showMap?  'inline':'none' }" ></app-timeline>
 <button class="button-65" (click)="ShowMap()">{{text}}</button>

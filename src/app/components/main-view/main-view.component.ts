@@ -13,6 +13,7 @@ export class MainViewComponent implements OnInit {
 
   posts$!: Observable<AcNotification>;
   posts!: Observable<IPost[]>;
+  posts2!:IPost[];
 
   showMap: boolean = true;
   text: string = 'TimeLine';
@@ -24,6 +25,7 @@ export class MainViewComponent implements OnInit {
     this.posts$ = this.postService.AllPostsFirst().pipe(
       pairwise(),
       map((posts) => {
+        this.posts2 = posts[1];
         if(posts[0].length < posts[1].length){
           posts[0] = posts[1];
         }

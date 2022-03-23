@@ -11,6 +11,7 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class FullPostComponent implements OnInit {
   @Input() post!: IMapObj;
+
   @Output() closeWindowEmitter = new EventEmitter();
   flag1?:boolean = true
   flag2?:boolean = false
@@ -20,6 +21,7 @@ export class FullPostComponent implements OnInit {
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
+  
     this.checkIfLiked()
   }
   checkIfLiked() {

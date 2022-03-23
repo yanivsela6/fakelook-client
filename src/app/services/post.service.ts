@@ -33,12 +33,11 @@ export class PostService {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.authService.getToken(),
     });
-    //post.userId = this.authService.getUserId();
-    console.log(post);
     this.http.post<IPost>(currentUrl, post, { headers }).subscribe((res) => {
         this.router.navigateByUrl('/Home');
       });
   }
+  
   AllPostsFirst(): Observable<IPost[]>{
     const currentUrl = `${this.url}Posts`;
     this.subs.push(
@@ -68,7 +67,6 @@ export class PostService {
       Authorization: 'Bearer ' + this.authService.getToken(),
     });
     this.subs.push(this.http.post<IPost[]>(currentUrl, query, { headers }).subscribe(res=>{
-      console.log(res);
       this.postsSubject.next(res);    
     }))
   }
