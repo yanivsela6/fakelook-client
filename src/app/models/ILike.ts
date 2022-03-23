@@ -1,4 +1,3 @@
-import IUser from "./IUser";
 
 interface ILike{
     id:number|undefined,

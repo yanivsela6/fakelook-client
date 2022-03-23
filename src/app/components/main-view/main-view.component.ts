@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AcNotification, ActionType } from 'angular-cesium';
-import { map, mergeMap, Observable } from 'rxjs';
+import { map, mergeMap, Observable, pairwise } from 'rxjs';
 import IPost from 'src/app/models/IPost';
 import { PostService } from 'src/app/services/post.service';
 
@@ -11,25 +11,36 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class MainViewComponent implements OnInit {
 
-  posts$!:Observable<AcNotification>
-  showMap:boolean = true;
-  text:string = 'TimeLine';
+  posts$!: Observable<AcNotification>;
+  posts!: Observable<IPost[]>;
+  posts2!:IPost[];
+
+  showMap: boolean = true;
+  text: string = 'TimeLine';
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
-    this.posts$ = this.postService.AllPosts().pipe(
+    this.posts = this.postService.AllPostsFirst();
+
+    this.posts$ = this.postService.AllPostsFirst().pipe(
+      pairwise(),
       map((posts) => {
-        return posts.map((post) => ({
+        this.posts2 = posts[1];
+        if(posts[0].length < posts[1].length){
+          posts[0] = posts[1];
+        }
+        return posts[0].map((post) => ({
           id: post.id.toString(),
-          actionType: ActionType.ADD_UPDATE,
+          actionType: posts[1].find(x => x.id == post.id) ? ActionType.ADD_UPDATE : ActionType.DELETE,
           entity: this.convert(post),
         }));
       }),
       mergeMap((post) => post)
     );
+
   }
-  convert(post:IPost) {
-     let  x={
+  convert(post: IPost) {
+    let x = {
       id: post.id,
       description: post.description,
       imageSrc: post.imageSorce,
@@ -43,8 +54,12 @@ export class MainViewComponent implements OnInit {
     }
     return x
   }
-  ShowMap(){
-    this.text = this.showMap ?  'Map':'TimeLine';
+
+
+  ShowMap() {
+    this.text = this.showMap ? 'Map' : 'TimeLine';
     this.showMap = !this.showMap;
   }
 }
+
+

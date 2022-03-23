@@ -1,0 +1,11 @@
+    <div class="display-center">
+        <div>
+          <img src="{{ post.imageSorce }}" alt="{{ post.description }}" />
+        </div>
+        <div >
+            <i [ngClass]="{ bx: true, 'bx-heart': flag1, 'bxs-heart': flag2 }" (click)="likeClicked()"></i>
+        </div>
+        <div class="post-description display-center">
+          <h3>{{ post.description }}</h3>
+      </div>
+    </div>

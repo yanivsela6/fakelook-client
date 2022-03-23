@@ -28,6 +28,17 @@ export class AuthService {
       })
     );
   }
+
+  changePass(user: IUser): void {
+    const currentUrl = `${this.url}Auth/Password`;
+    this.subs.push(
+      this.http.post<any>(currentUrl, user).subscribe((res) => {
+        this.router.navigateByUrl('/Home/filter');
+
+      })
+    );
+  }
+  
   
   checkAccess(): Observable<boolean> {
     const currentUrl = `${this.url}Auth/TestAll`;

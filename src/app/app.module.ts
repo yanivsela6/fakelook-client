@@ -23,6 +23,7 @@ import { FriendsComponent } from './components/friends/friends.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { FullPostComponent } from './components/full-post/full-post.component';
+import { TimelinePostComponent } from './components/timeline-post/timeline-post.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { FullPostComponent } from './components/full-post/full-post.component';
     FriendsComponent,
     LogoutComponent,
     ForgetPasswordComponent,
-    FullPostComponent
+    FullPostComponent,
+    TimelinePostComponent
   ],
   imports: [
     CommonModule,

@@ -20,9 +20,7 @@ const randomLocation = require('random-location');
 export class MapComponent implements OnInit {
 
 
-  constructor(
-    private viewerConf: ViewerConfiguration,
-  ) {
+  constructor(private viewerConf: ViewerConfiguration,) {
     viewerConf.viewerOptions = {
       selectionIndicator: false,
       timeline: false,
@@ -37,18 +35,18 @@ export class MapComponent implements OnInit {
       useDefaultRenderLoop: true,
     };
   }
-  @Input() posts$?:Observable<AcNotification>; ;
+  @Input() posts$?: Observable<AcNotification>;
   selectedPost!: IMapObj;
   showDialog = false;
   Cesium = Cesium;
   ngOnInit(): void {
-    
+
   }
   closeDialog(): void {
     this.showDialog = false;
   }
-  showFullPost(post:IMapObj) {
-    this.selectedPost=post;
-    this.showDialog=true;
+  showFullPost(post: IMapObj) {
+    this.selectedPost = post;
+    this.showDialog = true;
   }
 }

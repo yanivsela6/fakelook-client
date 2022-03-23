@@ -1,0 +1,15 @@
+img{
+    width:500px;
+    height: 500px;
+}
+.card{
+    display: flex;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
+    text-align: center;
+    font-family: arial;
+    padding: 20px;
+    flex-direction: row;
+    border-radius: 10px;
+
+}

@@ -45,9 +45,16 @@ export class WindowPostComponent implements OnInit {
 
     };
 
-    this.postService.EditPost(post);
-    this.showWindowPost.emit(false);
-    alert("You added new post")
+    navigator.geolocation.getCurrentPosition((postion)=> {
+      post.x_Position = postion.coords.longitude;
+      post.y_Position = postion.coords.latitude;
+      post.z_Position = 3620170.526302757;
+      this.postService.EditPost(post);
+      this.showWindowPost.emit(false);
+      alert("You added new post")
+  
+    });
+
   }
   createTags(tags:string):ITag[]{
     let allTagStrings = tags.split(",");
@@ -61,5 +68,7 @@ export class WindowPostComponent implements OnInit {
   imgSrcInput(src: string) {
     this.imageSrc = src;
   }
+
+  
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import IUser from 'src/app/models/IUser';
 import { AuthService } from 'src/app/services/auth.service';
 import { EmailService } from 'src/app/services/email.service';
 
@@ -10,22 +11,22 @@ import { EmailService } from 'src/app/services/email.service';
 })
 export class ForgetPasswordComponent implements OnInit {
 
-  constructor(private emailService: EmailService) {}
-  signUpForm = new FormGroup({
+  constructor(private authService: AuthService) {}
+  changePassForm = new FormGroup({
     Name: new FormControl('', [
       Validators.required,
       Validators.minLength(2),
     ]),
-    Address: new FormControl('', [
+    Password: new FormControl('', [
       Validators.required,
-      Validators.email,
+      Validators.minLength(6),
     ]),
   });
 
   ngOnInit(): void {}
   submitPost(): void {
-    //  const user: IUser = this.signUpForm.value;
-    //  this.authService.signUp(user);
-    alert("We sent to your mail a new password")
+    const user: IUser = this.changePassForm.value;
+    this.authService.changePass(user);
+    alert("The Password changed");
   }
 }
