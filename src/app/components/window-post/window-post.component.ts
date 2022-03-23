@@ -40,9 +40,9 @@ export class WindowPostComponent implements OnInit {
       z_Position: 0,
       date: new Date(),
       userId: Number(sessionStorage.getItem('userId')),
-      tags:tags,
-      likes:[]
-
+      tags: tags,
+      likes: [],
+      Comments: []
     };
 
     navigator.geolocation.getCurrentPosition((postion)=> {
