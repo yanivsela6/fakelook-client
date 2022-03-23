@@ -42,7 +42,7 @@ export class WindowPostComponent implements OnInit {
       userId: Number(sessionStorage.getItem('userId')),
       tags: tags,
       likes: [],
-      Comments: []
+      comments: []
     };
 
     navigator.geolocation.getCurrentPosition((postion)=> {

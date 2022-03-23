@@ -105,7 +105,7 @@ export class PostService {
     });
     comment.userId = this.authService.getUserId();
     this.http.post<ILike>(currentUrl, comment, { headers }).subscribe((res) => {
-      this.postsSubject.value.find(p => p.id == comment.postId)?.Comments.push(comment);
+      this.postsSubject.value.find(p => p.id == comment.postId)?.comments.push(comment);
       this.postsSubject.next(this.postsSubject.value);
       return res
       });

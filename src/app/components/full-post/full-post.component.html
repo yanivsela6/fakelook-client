@@ -4,6 +4,9 @@
         <div>
           <img src="{{ post.imageSrc }}" alt="{{ post.description }}" />
         </div>
+        <div *ngFor="let item of post.comments" >
+          <p>{{item.content}}</p>
+        </div>
         <div >
             <i [ngClass]="{ bx: true, 'bx-heart': flag1, 'bxs-heart': flag2 }" (click)="likeClicked()"></i>
         </div>

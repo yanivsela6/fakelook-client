@@ -29,8 +29,6 @@ export class FullPostComponent implements OnInit {
     for (var i = 0; i < this.post.likes.length; i++) {
       if (this.id == this.post.likes[i].userId) {
         this.index = i;
-        console.log(this.id)
-        console.log(this.post.likes[i].isActive + " boo")
         if (this.post.likes[i].isActive) {
           this.flag1 = false;
           this.flag2 = true;
@@ -42,6 +40,7 @@ export class FullPostComponent implements OnInit {
       }
     }
   }
+
   likeClicked() {
     this.ngOnInit()
     this.flag1 = !this.flag1
@@ -53,12 +52,12 @@ export class FullPostComponent implements OnInit {
       this.postService.UpdateLike(this.post.likes[this.index].id);
     }
     else {
-      var l: ILike = {
+      var newLike: ILike = {
         isActive: true,
         userId: this.id,
         postId: Number(this.post.id)
       }
-    this.postService.AddLike(l);
+    this.postService.AddLike(newLike);
 
     }
   }

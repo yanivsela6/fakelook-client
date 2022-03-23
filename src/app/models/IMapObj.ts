@@ -1,3 +1,4 @@
+import IComment from "./IComment";
 import ILike from "./ILike";
 import ITag from "./ITag";
 
@@ -11,5 +12,6 @@ interface IMapObj {
     date:Date,
     userId:number,
     tags:ITag[],
+    comments:IComment[],
   }
   export default IMapObj

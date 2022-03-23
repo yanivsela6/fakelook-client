@@ -13,7 +13,7 @@ interface IPost{
     userId:number,
     tags:ITag[],
     likes:ILike[],
-    Comments:IComment[],
+    comments:IComment[],
 
 }
 export default IPost; 
