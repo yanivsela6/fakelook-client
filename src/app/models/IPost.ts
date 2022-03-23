@@ -1,3 +1,4 @@
+import IComment from "./IComment";
 import ILike from "./ILike";
 import ITag from "./ITag";
 
@@ -12,5 +13,7 @@ interface IPost{
     userId:number,
     tags:ITag[],
     likes:ILike[],
+    Comments:IComment[],
+
 }
 export default IPost; 

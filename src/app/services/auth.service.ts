@@ -22,6 +22,7 @@ export class AuthService {
     const currentUrl = `${this.url}Auth/SignUp`;
     this.subs.push(
       this.http.post<any>(currentUrl, user).subscribe((res) => {
+        console.log(res);
         this.setUserId(res.id);
         this.setToken(res.token);
         this.router.navigateByUrl('/Home/filter');

@@ -1,7 +1,7 @@
 interface IComment{
-    id:string,
+    id:number,
     content:string,
-    userId:string,
-    postId:string,
+    userId:number,
+    postId:number,
 }
 export default IComment; 

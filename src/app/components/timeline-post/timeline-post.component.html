@@ -3,7 +3,7 @@
           <img src="{{ post.imageSorce }}" alt="{{ post.description }}" />
         </div>
         <div >
-            <i [ngClass]="{ bx: true, 'bx-heart': flag1, 'bxs-heart': flag2 }" (click)="likeClicked()"></i>
+            <i [ngClass]="{ bx: true, 'bx-heart': flag1, 'bxs-heart': flag2 }"></i>
         </div>
         <div class="post-description display-center">
           <h3>{{ post.description }}</h3>

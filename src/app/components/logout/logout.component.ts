@@ -13,8 +13,8 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {
   }
   LogOut(){
-    this.router.navigateByUrl('/Login');
     sessionStorage.removeItem('token');
-
+    sessionStorage.removeItem('userId');
+    this.router.navigateByUrl('/Login');
   }
 }

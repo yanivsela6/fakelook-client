@@ -1,8 +1,7 @@
 
 interface ILike{
-    id:number|undefined,
+    id?:number,
     isActive:boolean,
-    user:any,
     userId:number,
     postId:number
 }
