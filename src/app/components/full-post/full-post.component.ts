@@ -74,7 +74,7 @@ export class FullPostComponent implements OnInit {
     }
 
     this.postService.AddComment(commit);
-    this.post.comments.push(commit)
+   this.post.comments.push(commit)
 
   }
 

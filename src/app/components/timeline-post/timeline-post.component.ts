@@ -19,12 +19,17 @@ export class TimelinePostComponent implements OnInit {
   changed: boolean = false
   id = Number(sessionStorage.getItem('userId'));
   text: string = "";
+  likesLen:number =0;
+  
 
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
 
     this.checkIfLiked()
+    this.likesLen = 0;
+    this.post.likes.forEach(x=> {if ( x.isActive == true ){this.likesLen++}})
+
   }
   checkIfLiked() {
     console.log(this.post);
@@ -50,10 +55,13 @@ export class TimelinePostComponent implements OnInit {
     console.log(this.index)
     if (this.index != -1) {
       console.log(this.post.likes[this.index].id);
+      this.likesCounter(this.post.likes[this.index].isActive);
       this.post.likes[this.index].isActive = !this.post.likes[this.index].isActive
       this.postService.UpdateLike(this.post.likes[this.index].id);
     }
     else {
+      this.likesCounter(true);
+
       var newLike: ILike = {
         isActive: true,
         userId: this.id,
@@ -62,6 +70,16 @@ export class TimelinePostComponent implements OnInit {
       this.postService.AddLike(newLike);
 
     }
+  }
+  likesCounter(x:boolean){
+    if(x){
+      this.likesLen = this.likesLen -1;
+    }
+    else{
+      this.likesLen = this.likesLen +1;
+
+    }
+
   }
 
   CommitClicked() {
@@ -73,7 +91,7 @@ export class TimelinePostComponent implements OnInit {
     }
 
     this.postService.AddComment(commit);
-    this.post.comments.push(commit)
+    //this.post.comments.push(commit)
 
   }
 

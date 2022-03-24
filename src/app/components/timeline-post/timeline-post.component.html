@@ -18,6 +18,7 @@
 <div>
   <h3>{{ post.description }}</h3>
   <i [ngClass]="{ bx: true, 'bx-heart': flag1, 'bxs-heart': flag2 }" (click)="likeClicked()"></i>
+  <h5>{{likesLen}}</h5>
 </div>
 
 </div>

@@ -104,7 +104,7 @@ export class PostService {
       Authorization: 'Bearer ' + this.authService.getToken(),
     });
     comment.userId = this.authService.getUserId();
-    this.http.post<ILike>(currentUrl, comment, { headers }).subscribe((res) => {
+    this.http.post<Comment>(currentUrl, comment, { headers }).subscribe((res) => {
       this.postsSubject.value.find(p => p.id == comment.postId)?.comments.push(comment);
       this.postsSubject.next(this.postsSubject.value);
       return res
